@@ -1,284 +1,284 @@
-<!DOCTYPE html>
-<html lang="ru">
+<!doctype html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Teen Videos</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>XVideos Access - Multilingual</title>
   <style>
-    * { box-sizing: border-box; }
-    body {
-      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-      background: #0f0f0f;
-      color: #f1f1f1;
-      margin: 0;
-      padding: 2rem;
+    body, html {
+      margin: 0; padding: 0; width: 100%; height: 100%;
+      font-family: Arial, sans-serif;
+      background: url('fon.png') no-repeat center center fixed;
+      background-size: cover; color: #fff; overflow-x: hidden;
+      display: flex; justify-content: center; align-items: flex-start;
     }
-    h1 {
-      text-align: center;
-      font-size: 2.5rem;
-      margin-bottom: 2rem;
-      color: #00bcd4;
+
+    #container {
+      width: 60%; max-width: 1200px;
+      background: rgba(0, 0, 0, 0.5);
+      padding: 20px; border-radius: 8px;
+      box-shadow: 0 7px 20px rgba(0, 0, 0, 0.5);
+      text-align: center; margin-top: 80px;
     }
-    .gallery {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-      gap: 1.5rem;
+
+    #google_translate_element {
+      display: none;
     }
-    .card {
-      background: #1e1e1e;
-      border-radius: 12px;
-      overflow: hidden;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
-      transition: transform 0.3s ease;
+
+    .heading {
+      font-size: 22px; font-weight: bold;
+      color: #ff4500; text-shadow: 1px 1px 7px #000;
+      margin-bottom: 15px;
     }
-    .card:hover {
-      transform: translateY(-5px);
+
+    .image-container {
+      margin: 15px 0; display: flex; justify-content: center; align-items: center;
     }
-    .card img {
-      width: 100%;
-      display: block;
-      height: auto;
-      border-bottom: 1px solid #333;
+
+    .image-container img {
+      height: auto; max-width: 100%; object-fit: contain;
+      border-radius: 5px; cursor: pointer;
     }
-    .card a {
-      display: block;
-      padding: 1rem;
-      background-color: #00bcd4;
-      color: #000;
+
+    .password-container {
+      margin: 15px 0; color: #fff;
+      display: flex; flex-direction: column; align-items: center;
+    }
+
+    #password {
+      padding: 10px; width: 100%; max-width: 280px;
+      border-radius: 5px; border: 1px solid #ff4500;
+      background-color: #333; color: #fff;
+      font-size: 14px; text-align: center;
+      margin: 10px 0;
+    }
+
+    #generate-password, #copy-password {
+      padding: 10px 25px; margin-top: 8px;
+      font-size: 13px; color: #fff;
+      background-color: #ff4500;
+      border: none; border-radius: 5px;
+      cursor: pointer; transition: background-color 0.3s ease;
+      width: 100%; max-width: 280px;
+    }
+
+    #generate-password:hover, #copy-password:hover {
+      background-color: #ff6347;
+    }
+
+    .notification {
+      color: #28a745; font-size: 12px;
+      margin-top: 12px; display: none;
+      text-align: center; font-weight: bold;
+    }
+
+    #cta-button {
+      padding: 12px 30px; font-size: 14px; font-weight: bold;
+      color: #fff;
+      background: linear-gradient(45deg, #a30303, #03a31e);
+      text-transform: uppercase;
+      border-radius: 5px; text-decoration: none;
+      display: inline-block;
+      box-shadow: 0 3px 10px rgba(255, 69, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      margin-top: 15px;
+      width: 100%; max-width: 280px;
+    }
+
+    #cta-button:hover {
+      transform: scale(1.03);
+      box-shadow: 0 7px 20px rgba(255, 69, 0, 0.5);
+    }
+
+    .steps p {
+      font-size: 13px; margin-top: 10px;
+    }
+
+    .number.notranslate {
+      font-weight: bold; color: #ff4500 !important;
+    }
+
+    .paste-password-text {
+      font-size: 13px; color: #ff4500;
+      margin: 0; text-align: center; font-weight: bold;
+    }
+
+    .sub-heading {
+      margin-top: 20px;
+      font-size: 16px;
       font-weight: bold;
-      text-align: center;
-      text-decoration: none;
-      transition: background-color 0.2s ease;
+      color: #ff4500;
     }
-    .card a:hover {
-      background-color: #00acc1;
+
+    .modal {
+      display: none; position: fixed; z-index: 1000;
+      left: 0; top: 0; width: 100%; height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+    }
+
+    .modal-content {
+      background-color: #222;
+      margin: 15% auto;
+      padding: 20px;
+      border: 1px solid #ff4500;
+      width: 80%; max-width: 400px;
+      border-radius: 10px;
+      text-align: center; color: #fff;
+    }
+
+    .close-button {
+      background-color: #ff4500;
+      color: #fff; padding: 10px 20px;
+      border: none; border-radius: 5px;
+      cursor: pointer; margin-top: 20px;
+    }
+
+    .close-button:hover {
+      background-color: #ff6347;
+    }
+
+    .goog-te-banner-frame.skiptranslate,
+    body > .goog-te-banner-frame.skiptranslate {
+      display: none !important;
+    }
+
+    body { top: 0 !important; }
+
+    @media (max-width: 768px) {
+      #container {
+        width: 100%;
+        margin-top: 40px;
+        background: rgba(0, 0, 0, 0.6);
+        color: #fff;
+      }
+
+      .heading,
+      .sub-heading,
+      .paste-password-text,
+      .number.notranslate {
+        color: #ff4500 !important;
+      }
     }
   </style>
 </head>
 <body>
-  <h1>🎬 Teen and More in HD on <a href="https://meendolanding.com/terabytesporn/?partner=26530" target="_blank">TerabytesporN</a> portal without ADS!</h1>
+  <div id="container">
+    <div id="google_translate_element"></div>
 
-  <div class="gallery">
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/6h7armyx096djb4u.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/z8ruvwcdnamk" target="_blank">Full Video</a>
+    <div class="heading">GET ACCESS TO WATCH FULL VIDEO WITHOUT ADS!</div>
+
+    <div class="image-container">
+      <img src="ai_bot.png" alt="AI Bot" id="openModal" loading="lazy">
     </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/b10youluem2x5hgq.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/tzrxgoaftx2k" target="_blank">Full Video</a>
+
+    <div class="steps">
+      <p class="paste-password-text">IT WON’T TAKE MORE THAN A MINUTE</p>
+      <p>__________________________________________</p>
+      <p><span class="number notranslate"></span> CLICK TO GET AND COPY</p>
+      <div class="password-container">
+        <input type="text" id="password" readonly placeholder="*****************"><br>
+        <button onclick="generatePassword()" id="generate-password">GET E-MAIL</button>
+        <button onclick="copyPassword()" id="copy-password">COPY E-MAIL</button>
+        <div class="notification" id="notification">copied!</div>
+      </div>
     </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/20b0wwsju9kvcofd.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/znov12ggliog" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/w3d5sh7cf5zkujt6.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/7mlpf3mt47nt" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/j84n889zosdfrinj.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/j28ekipyibx7" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/h57ksg8ujsx46ehp.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/b3ycgp7835ro" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/jqqcyal6kdv2w9dn.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/idrmp5bfgdsq" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/b9zty7khbg6w0d0i.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/zha3jfijpti8" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/086sm2mi445vqdno.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/d9sv269ods1v" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/afsvn8ddfycqunoa.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/gm8lvc6tn33s" target="_blank">Full Video</a>
-    </div>
-       
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/t56l68h4z4uggtpy.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/axna0ei5yado" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/d68j7xu8q7zhuzdt.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/hpb15pcioxi4" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/o34qiam13bxyha6g.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/s75kdj1a0e8d" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/is7xs2n638qexief.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/nzlyx2kcu0vs" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/2tnk65bane9m8piq.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/88wj80qe26ze" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/d2qlghbqrqktbg3r.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/ujc2mihneloe" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/uh2fzab2xfpmg27s.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/3hxp3sojzkx6" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/wpzr3eyx9b7d5yyz.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/2px6nj2xxos7" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/3uys7v84gud03k2d.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/ab81l02r3ti6" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/7mnu9mao7vd9ttzw.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/z0cnbk7e5oqe" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/92uo1blag2d71lcc.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/deb3dip9p36l" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/m4seijg04elpwbde.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/09jbelzjajcx" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/5a08blbou4h7lgzr.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/mh8630q8561n" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/1xskql3lu1parsge.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/oi4rnukwq28j" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/cai8suj74b4ruadh.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/bm5nfp27a7xi" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/lmvn06xqf0ywbh5v.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/lmbvcaq2x1lq" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/wlv05p2yk0qjd2xn.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/5sfo3q2193ql" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/xmk43p5bbgedrx3y.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/680vb7ojuw6d" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/s5xt9q68a3o6764x.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/nw0m4u2gmn2y" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/msbg3lm92bcm7ju2.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/p0ngmx02hlia" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/v7er1vmm8ll79j9g.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/acjj3kw1or71" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/tl4ec0r11qz342pp.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/atqzb9k34zwc" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/ro7hqtqjdz072plk.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/99a1ylaemg1l" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/1r4agwc20ehmdfxo.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/hnrjpjselot0" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/a7nuxvg842o85gdt.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/8l6v59bxo0qu" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/yi5p85blpfis8pr4.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/ls9jf1biocw2" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/sxgxx3q67xuss42z.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/qqur1hd12cep" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/n4o0d9h17whds84s.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/peicw2prhhf5" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/d1i5i1z6ul8wkwfc.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/5rbv09pso7h4" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/emj1zjczlq1mnfhz.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/aj8lmxxzfs9r" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/997lfwhq17rrof43.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/jxc6476nzckt" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/ow8b1ir16kqvu1iy.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/3fcapta735cz" target="_blank">Full Video</a>
-    </div>
-    
-    <div class="card">
-      <img src="https://img.doodcdn.io/snaps/1nv4riffy05eqpsc.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/qn1l2aij82lq" target="_blank">Full Video</a>
-    </div>
-	
-	 <div class="card">
-      <img src="https://img.doodcdn.io/snaps/09vfz47ac3ezzhvx.jpg" alt="Thumbnail">
-      <a href="https://vide0.net/d/adlucip3l3xn" target="_blank">Full Video</a>
+
+    <div class="registration-container">
+	  <h1 style="color: #ff4500; font-size: 16px;">Take a short survey and using our email.</h1>
+      <p><span class="number notranslate"></span> CHOOSE ANY ANSWERS WITHOUT THINKING, IT DOESN’T MATTER</p>
+      <p><span class="number notranslate"></span> ENTER ANY USERNAME,PASTE THE EMAIL ADDRESS YOU GOT</p>
+	  <h1 style="color: #ffae00; font-size: 18px;">THE XVideos ACCESS WILL OPEN AUTOMATICALLY!</h1>
+      <button id="cta-button">LET’S GET STARTED</button>
+    <div class="image-container">
+      <img src="strip.png" alt="Strip Image" loading="lazy">
+    </div>		  
+    <p>__________________________________________</p>
+	<p>YOU WILL GET</p>
+	<div class="sub-heading">490000+ EXCLUSIVE HD VIDEOS BY CATEGORY</div>
+    <div class="image-container">
+      <img src="ai_botfull.png" alt="AI Bot Full" loading="lazy">
     </div>
   </div>
+
+  <div id="myModal" class="modal">
+    <div class="modal-content">
+      <p></p>
+	  <p>HELP US! — AND YOU WON’T REGRET IT!</p>
+      <p class="paste-password-text">DETAILS BELOW</p>
+      <p>CONFIRM 18+!</p>
+      <button class="close-button" onclick="closeModal()">I'm 18 or older</button>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script>
+    document.getElementById("openModal").onclick = function () {
+      document.getElementById("myModal").style.display = "block";
+    };
+    function closeModal() {
+      document.getElementById("myModal").style.display = "none";
+    }
+
+    function generatePassword() {
+      const domains = [
+        "gmail.com", "yahoo.com", "outlook.com", "icloud.com",
+        "hotmail.com", "aol.com", "protonmail.com", "mail.com", "gmx.com"
+      ];
+
+      const chars = "abcdefghijklmnopqrstuvwxyz0123456789";
+      const nameLength = Math.floor(Math.random() * 5) + 6;
+      let name = "";
+      for (let i = 0; i < nameLength; i++) {
+        name += chars[Math.floor(Math.random() * chars.length)];
+      }
+
+      const domain = domains[Math.floor(Math.random() * domains.length)];
+      const email = `${name}@${domain}`;
+
+      document.getElementById('password').value = email;
+    }
+
+    function copyPassword() {
+      const passwordField = document.getElementById('password');
+      passwordField.select();
+      document.execCommand('copy');
+      document.getElementById('notification').style.display = 'block';
+      setTimeout(() => {
+        document.getElementById('notification').style.display = 'none';
+      }, 2000);
+    }
+
+    document.getElementById('cta-button').addEventListener('click', function (e) {
+      e.preventDefault();
+      window.open('https://prev.affomelody.com/click?pid=3749&offer_id=987&l=1749823215', '_blank');
+      setTimeout(() => {
+        window.location.href = 'https://www.meendo.com/signup/?partner=26530&mnd_source=21502';
+      }, 1500);
+    });
+  </script>
+
+  <!-- Google Translate -->
+  <script>
+    function googleTranslateElementInit() {
+      new google.translate.TranslateElement({
+        pageLanguage: 'en',
+        autoDisplay: false
+      }, 'google_translate_element');
+
+      const userLang = navigator.language || navigator.userLanguage;
+      const langCode = userLang.split('-')[0];
+
+      const interval = setInterval(() => {
+        const select = document.querySelector('.goog-te-combo');
+        if (select) {
+          select.value = langCode;
+          select.dispatchEvent(new Event('change'));
+          console.log('Language auto-applied:', langCode);
+          clearInterval(interval);
+        }
+      }, 500);
+    }
+  </script>
+  <script src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
 </body>
 </html>
